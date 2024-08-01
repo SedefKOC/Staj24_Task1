@@ -1,0 +1,131 @@
+package JAVA;
+import java.util.Scanner;
+
+class Toplama {
+    double addition(double a, double b) {
+        return a + b;
+    }
+}
+
+class Cikarma {
+    double subtraction(double a, double b) {
+        return a - b;
+    }
+}
+
+class Carpma {
+    double multiplication(double a, double b) {
+        return a * b;
+    }
+}
+
+class Bolme {
+    double division(double a, double b) {
+        if (b == 0) {
+            throw new IllegalArgumentException("Division Error!");
+        }
+        return a / b;
+    }
+}
+
+class Karekok {
+    double squareRoot(double a) {
+        if (a < 0) {
+            throw new IllegalArgumentException("Error!");
+        }
+        return Math.sqrt(a);
+    }
+}
+
+class Us {
+    double power(double base, double exponent) {
+        return Math.pow(base, exponent);
+    }
+}
+
+public class Task1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        Toplama toplama = new Toplama();
+        Cikarma cikarma = new Cikarma();
+        Carpma carpma = new Carpma();
+        Bolme bolme = new Bolme();
+        Karekok karekok = new Karekok();
+        Us us = new Us();
+
+        do {
+            
+            System.out.println("Calculator");
+            System.out.println("1. Addition");
+            System.out.println("2. Subtraction");
+            System.out.println("3. Multiplication");
+            System.out.println("4. Division");
+            System.out.println("5. Square Root");
+            System.out.println("6. Power Calculation");
+            System.out.println("7. Exit");
+            System.out.print("Choose an operation: ");
+            
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the first number: ");
+                    double num1 = scanner.nextDouble();
+                    System.out.print("Enter the second number: ");
+                    double num2 = scanner.nextDouble();
+                    System.out.println("Result: " + toplama.addition(num1, num2));
+                    break;
+                case 2:
+                    System.out.print("Enter the first number: ");
+                    num1 = scanner.nextDouble();
+                    System.out.print("Enter the second number: ");
+                    num2 = scanner.nextDouble();
+                    System.out.println("Result: " + cikarma.subtraction(num1, num2));
+                    break;
+                case 3:
+                    System.out.print("Enter the first number: ");
+                    num1 = scanner.nextDouble();
+                    System.out.print("Enter the second number: ");
+                    num2 = scanner.nextDouble();
+                    System.out.println("Result: " + carpma.multiplication(num1, num2));
+                    break;
+                case 4:
+                    System.out.print("Enter the first number: ");
+                    num1 = scanner.nextDouble();
+                    System.out.print("Enter the second number: ");
+                    num2 = scanner.nextDouble();
+                    try {
+                        System.out.println("Result: " + bolme.division(num1, num2));
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error occurred"); // Hata mesajı yazdırılır
+                    }
+                    break;
+                case 5:
+                    System.out.print("Enter the number: ");
+                    num1 = scanner.nextDouble();
+                    try {
+                        System.out.println("Result: " + karekok.squareRoot(num1));
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error occurred"); // Hata mesajı yazdırılır
+                    }
+                    break;
+                case 6:
+                    System.out.print("Enter the base: ");
+                    num1 = scanner.nextDouble();
+                    System.out.print("Enter the exponent: ");
+                    num2 = scanner.nextDouble();
+                    System.out.println("Result: " + us.power(num1, num2));
+                    break;
+                case 7:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+        } while (choice != 7);
+
+        scanner.close();
+    }
+}
